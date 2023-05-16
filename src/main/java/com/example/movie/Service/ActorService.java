@@ -3,6 +3,7 @@ package com.example.movie.Service;
 import com.example.movie.Model.Actor;
 import com.example.movie.Repository.ActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,11 +23,17 @@ public class ActorService {
         return list;
     }
 
-
     public List<Actor> getActorOscar(){
         return  actorRepository.findActorByOscar();
-
     }
+
+    public List<Actor> sortByTitle(String columnName){
+        Sort sort = Sort.by(columnName).ascending();
+        return actorRepository.findAll(sort);
+    }
+
+
+
 
 
 }

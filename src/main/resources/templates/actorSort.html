@@ -6,14 +6,24 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>OSCAR</title>
+    <title>ACTORS</title>
 </head>
 <body>
 <div class="container mt-5">
-    <h2 align="center">Actor's with oscar</h2>
+    <h2 align="center">Actor's database</h2>
 
-    <form th:action="@{/actor}">
-        <p><input type="submit" value="back to actors"></p>
+    <form th:action="@{/oscar}">
+        <p><input type="submit" value="Show actors with oscar"></p>
+    </form>
+
+    <form th:action="@{/actor}" method="get">
+        <label for="columnName">Sortuj po:</label>
+        <select name="columnName" id="columnName">
+            <option value="firstname">Imie</option>
+            <option value="lastname">Nazwisko</option>
+            <!-- Dodaj inne opcje sortowania, je?li s? potrzebne -->
+        </select>
+        <button type="submit">Sortuj</button>
     </form>
 
     <table class="table table-bordered table-sm mt-2">
@@ -29,14 +39,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="l : ${list}" th:field="${l}">
-            <td th:text="${lStat.index+1}"></td>
-            <td th:text="${l.firstname}"></td>
-            <td th:text="${l.lastname}"></td>
-            <td th:text="${l.birth}"></td>
-            <td th:text="${l.gender}"></td>
-            <td th:text="${l.score}"></td>
-            <td th:text="${l.oscar}"></td>
+        <tr th:each="actor : ${list}">
+            <td th:text="${actor.id}"></td>
+            <td th:text="${actor.firstName}"></td>
+            <td th:text="${actor.lastName}"></td>
+            <td th:text="${actor.birth}"></td>
+            <td th:text="${actor.gender}"></td>
+            <td th:text="${actor.score}"></td>
+            <td th:text="${actor.oscar}"></td>
         </tr>
         </tbody>
     </table>

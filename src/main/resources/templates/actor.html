@@ -17,6 +17,16 @@
     </form>
 
 
+    <form th:action="@{/actor}">
+        <label for="columnName">Wybierz kolumn? do sortowania:</label>
+        <select name="columnName" id="columnName">
+            <option value="firstname">First name</option>
+            <option value="lastname">Last name</option>
+        </select>
+        <br>
+        <input type="submit" value="Sortuj">
+    </form>
+
 
     <table class="table table-bordered table-sm mt-2">
         <thead>
