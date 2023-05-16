@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h2 align="center">Actor's database</h2>
+    <h2 align="center">Actor's</h2>
 
     <form th:action="@{/oscar}">
         <p><input type="submit" value="Show actors with oscar"></p>
@@ -18,13 +18,16 @@
 
 
     <form th:action="@{/actor}">
-        <label for="columnName">Wybierz kolumn? do sortowania:</label>
+        <label for="columnName">Sort:</label>
         <select name="columnName" id="columnName">
             <option value="firstname">First name</option>
             <option value="lastname">Last name</option>
+            <option value="birth"> Birth</option>
+            <option value="gender">Gender</option>
+            <option value="score">Score</option>
         </select>
         <br>
-        <input type="submit" value="Sortuj">
+        <input type="submit" value="Sort">
     </form>
 
 
