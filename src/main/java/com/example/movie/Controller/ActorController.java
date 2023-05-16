@@ -1,7 +1,7 @@
 package com.example.movie.Controller;
 
 
-import com.example.movie.Actor;
+import com.example.movie.Model.Actor;
 import com.example.movie.Service.ActorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -17,16 +17,25 @@ import java.util.List;
     private ActorService actorService;
 
 
-    @GetMapping("/")
+    @GetMapping("/actor")
     public String home(Actor actor, Model model){
         List<Actor> list = actorService.getActor();
         model.addAttribute("list",list);
         return "actor";
     }
 
-//    @GetMapping("/name")
-//    public String home(Model model){
-//        model.addAttribute("name", "Przemek");
-//        return "home";
-//    }
+    @GetMapping("/home")
+    public String home(Model model){
+        model.addAttribute("name", "Przemek");
+        return "home";
+    }
+
+    @GetMapping("/oscar")
+    public String oscar(Actor actor, Model model){
+        List<Actor> list = actorService.getActorOscar();
+        model.addAttribute("list",list);
+        return "oscar";
+    }
+
+
 }
