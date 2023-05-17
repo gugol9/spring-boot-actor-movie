@@ -24,9 +24,16 @@ import java.util.List;
     @GetMapping("/actor")
     public String getActor(
             @RequestParam(required = false) String columnName, Model model,
-            @RequestParam(required = false) String gender
+            @RequestParam(required = false) String gender,
+            @RequestParam(required = false) Boolean hasOscar
     ) {
+
         List<Actor> list = actorService.getActor();
+
+        if (hasOscar != null && hasOscar){
+            list = actorService.getActorOscar();
+        }
+
         if (gender != null) {
             list = actorService.getActorByGender(gender);
         } else if (columnName != null) {

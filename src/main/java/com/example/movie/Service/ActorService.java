@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class ActorService {
@@ -26,7 +27,7 @@ public class ActorService {
     }
 
     public List<Actor> getActorOscar(){
-        return  actorRepository.findActorByOscar();
+        return  actorRepository.getActorsWithOscar();
     }
 
     public List<Actor> sortByTitle(String columnName){
@@ -39,6 +40,27 @@ public class ActorService {
     }
 
 
+
+    /*
+    public Page<Actor> findPaginated(Pageable pageable) {
+        List<Actor> allActors = actorRepository.findAll();
+
+        int pageSize = pageable.getPageSize();;
+        int currentPage = pageable.getPageNumber();
+        int startItem = currentPage*pageSize;
+        List<Actor> list;
+
+        if (allActors.size() < startItem) {
+            list = Collections.emptyList();
+        } else {
+            int toIndex = Math.min(startItem + pageSize, allActors.size());
+            list = allActors.subList(startItem, toIndex);
+        }
+
+        return new PageImpl<>(list, pageable, allActors.size());
+    }
+
+     */
 
 
 

@@ -17,9 +17,11 @@ import java.util.List;
 public interface ActorRepository extends JpaRepository<Actor,Long> {
 
 
+
+
     //oscar
     @Query("SELECT a FROM Actor a  WHERE a.oscar = true")
-    List<Actor> findActorByOscar();
+    List<Actor> getActorsWithOscar();
 
 
     @Query("SELECT a FROM Actor a  WHERE a.gender = :gender")
