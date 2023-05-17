@@ -22,7 +22,14 @@ public interface ActorRepository extends JpaRepository<Actor,Long> {
     List<Actor> findActorByOscar();
 
 
-  //  @Query(value = "SELECT * FROM Actor ORDER BY  %:keyword%", nativeQuery = true)
+    @Query("SELECT a FROM Actor a  WHERE a.gender = :gender")
+    List<Actor> findActorByGender(@Param("gender") String gender);
+
+
+
+
+
+    //  @Query(value = "SELECT * FROM Actor ORDER BY  %:keyword%", nativeQuery = true)
    // List<Actor> findByKeyword(@Param("keyword") String keyword);
 
 }

@@ -18,20 +18,55 @@
         <p><input type="submit"  value="Show actors with oscar"></p>
     </form>
 
+    <div class="container">
+        <div class="row">
+    <div class="col-md-4">
 
-    <form th:action="@{/actor}" method="GET">
-
-            <select name="columnName" id="columnName">
-                <option value="firstname">First name</option>
-                <option value="lastname">Last name</option>
-                <option value="birth">Birth</option>
-                <option value="gender">Gender</option>
-                <option value="score">Score</option>
+        <form th:action="@{/actor}" method="GET">
+            <label for="gender">Select gender:</label>
+            <select name="gender" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="genderfluid">Genderfluid</option>
+                <option value="genderqueer">Genderqueer</option>
+                <option value="polygender">Polygender</option>
+                <option value="non-binary">Non-binary</option>
+                <option value="agender">Agender</option>
+                <option value="genderqueer">Genderqueer</option>
             </select>
+            <br>
+            <button type="submit" class="btn-hover color-1">Filter</button>
+        </form>
+        </div>
+        <div class="col-md-4">
+        <form th:action="@{/actor}" method="GET">
+                <select name="columnName" id="columnName">
+                    <option value="firstname">First name</option>
+                    <option value="lastname">Last name</option>
+                    <option value="birth">Birth</option>
+                    <option value="gender">Gender</option>
+                    <option value="score">Score</option>
+                </select>
+            <br>
+            <button type="submit"  class="btn-hover color-1">Sort</button>
+        </form>
+        </div>
 
-        <br>
-        <button type="submit" class="btn-hover color-1">Sort</button>
-    </form>
+            <div class="col-md-4">
+                <form th:action="@{/actor}" method="GET">
+                    <label for="oscar"></label>
+                    <select name="oscar" id="oscar">
+                        <option value="true">oscar</option>
+                        <option value="false">don't have oscar</option>
+
+                    </select>
+                    <br>
+                    <button type="submit"  class="btn-hover color-1">Filter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 
     <table class="table table-bordered table-sm mt-2">

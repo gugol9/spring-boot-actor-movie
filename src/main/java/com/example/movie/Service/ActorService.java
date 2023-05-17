@@ -3,10 +3,12 @@ package com.example.movie.Service;
 import com.example.movie.Model.Actor;
 import com.example.movie.Repository.ActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ActorService {
@@ -31,6 +33,13 @@ public class ActorService {
         Sort sort = Sort.by(columnName).ascending();
         return actorRepository.findAll(sort);
     }
+
+    public List<Actor> getActorByGender(String gender){
+        return actorRepository.findActorByGender(gender);
+    }
+
+
+
 
 
 
