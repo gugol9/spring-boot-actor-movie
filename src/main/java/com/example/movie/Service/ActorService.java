@@ -1,5 +1,6 @@
 package com.example.movie.Service;
 
+import com.example.movie.Exception.RecordNotFoundException;
 import com.example.movie.Model.Actor;
 import com.example.movie.Repository.ActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -39,28 +41,18 @@ public class ActorService {
         return actorRepository.findActorByGender(gender);
     }
 
-
-
-    /*
-    public Page<Actor> findPaginated(Pageable pageable) {
-        List<Actor> allActors = actorRepository.findAll();
-
-        int pageSize = pageable.getPageSize();;
-        int currentPage = pageable.getPageNumber();
-        int startItem = currentPage*pageSize;
-        List<Actor> list;
-
-        if (allActors.size() < startItem) {
-            list = Collections.emptyList();
-        } else {
-            int toIndex = Math.min(startItem + pageSize, allActors.size());
-            list = allActors.subList(startItem, toIndex);
-        }
-
-        return new PageImpl<>(list, pageable, allActors.size());
+    public List<Actor> getActorByOscarAndGender( String gender, boolean oscar){
+        return actorRepository.getActorsWithOscarAndGender(gender, String.valueOf(oscar));
     }
 
-     */
+   public void deleteActorById(Long id) throws RecordNotFoundException{
+       Optional<Actor> actor = actorRepository.findById(id);
+
+       if (actor.isPresent())actorRepository.deleteById(id);
+       else throw new RecordNotFoundException("No employee record exist for given id");
+   }
+
+
 
 
 

@@ -2,6 +2,7 @@
 <html xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
@@ -13,47 +14,41 @@
 <body>
 <div class="container mt-5">
     <h2 align="center">Actor's</h2>
-
-    <form th:action="@{/oscar}">
-        <p><input type="submit"  value="Show actors with oscar"></p>
-    </form>
-
-    <div class="container">
+    <div th:switch="${actors}" class="container">
         <div class="row">
-    <div class="col-md-4">
-
-        <form th:action="@{/actor}" method="GET">
-            <label for="gender">Select gender:</label>
-            <select name="gender" id="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="genderfluid">Genderfluid</option>
-                <option value="genderqueer">Genderqueer</option>
-                <option value="polygender">Polygender</option>
-                <option value="non-binary">Non-binary</option>
-                <option value="agender">Agender</option>
-                <option value="genderqueer">Genderqueer</option>
-            </select>
-            <br>
-            <button type="submit" class="btn-hover color-1">Filter</button>
-        </form>
-        </div>
-        <div class="col-md-4">
-        <form th:action="@{/actor}" method="GET">
-                <select name="columnName" id="columnName">
-                    <option value="firstname">First name</option>
-                    <option value="lastname">Last name</option>
-                    <option value="birth">Birth</option>
-                    <option value="gender">Gender</option>
-                    <option value="score">Score</option>
-                </select>
-            <br>
-            <button type="submit"  class="btn-hover color-1">Sort</button>
-        </form>
-        </div>
+            <div class="col-md-4">
+                <form th:action="@{/actors/list}" method="GET">
+                    <label for="gender">Select gender:</label>
+                    <select name="gender" id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="genderfluid">Genderfluid</option>
+                        <option value="genderqueer">Genderqueer</option>
+                        <option value="polygender">Polygender</option>
+                        <option value="non-binary">Non-binary</option>
+                        <option value="agender">Agender</option>
+                        <option value="genderqueer">Genderqueer</option>
+                    </select>
+                    <br>
+                    <button type="submit" class="btn-hover color-1">Filter</button>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <form th:action="@{/actors/list}" method="GET">
+                    <select name="columnName" id="columnName">
+                        <option value="firstname">First name</option>
+                        <option value="lastname">Last name</option>
+                        <option value="birth">Birth</option>
+                        <option value="gender">Gender</option>
+                        <option value="score">Score</option>
+                    </select>
+                    <br>
+                    <button type="submit"  class="btn-hover color-1">Sort</button>
+                </form>
+            </div>
 
             <div class="col-md-4">
-                <form th:action="@{/actor}" method="GET">
+                <form th:action="@{/actors/list}" method="GET">
                     <label for="oscar"></label>
                     <select name="hasOscar" id="oscar">
                         <option value="true">oscar</option>
@@ -79,17 +74,24 @@
             <th>Gender</th>
             <th>Score</th>
             <th>Oscar</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="l : ${list}" th:field="${l}">
-            <td th:text="${lStat.index+1}"></td>
+            <td th:text="${l.actorid}"></td>
             <td th:text="${l.firstname}"></td>
             <td th:text="${l.lastname}"></td>
             <td th:text="${l.birth}"></td>
             <td th:text="${l.gender}"></td>
             <td th:text="${l.score}"></td>
             <td th:text="${l.oscar}"></td>
+            <td><a th:href="@{/actors/delete/{actorid}(actorid=${l.actorid})}"
+                   class="btn btn-secondary ">
+                    <i class="fas fa-user-times ml-2"></i>
+                </a>
+            </td>
+
         </tr>
         </tbody>
     </table>
