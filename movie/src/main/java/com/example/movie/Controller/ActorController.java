@@ -40,11 +40,10 @@ import java.util.List;
     }
 
 
+
     @RequestMapping(path = "/delete/{ActorID}")
-    public String deleteEmployeeById(Model model, @PathVariable("ActorID") Long actorid) throws RecordNotFoundException {
-
-
-        actorService.deleteActorById(actorid);
+    public String deleteActorById(Model model, @PathVariable("ActorID") long ActorID) throws RecordNotFoundException {
+        actorService.deleteById(ActorID);
         List<Actor> list = actorService.getActor();
         model.addAttribute("list", list);
         return "actor";

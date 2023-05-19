@@ -2,6 +2,8 @@ package com.example.movie.Model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,32 +19,31 @@ public class Film {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "TitleID")
-    private Long titleId;
+    private Long TitleID;
 
-    @Column(name = "title")
+
     private String title;
 
-    @Column(name = "yearOfProduction")
+
     private LocalDate yearOfProduction;
 
-    @Column(name = "lengthminutes")
+
     private int lengthMinutes;
 
-    @Column(name = "genre")
+
     private String genre;
 
-    @Column(name = "ratinID")
     private Long ratinID;
 
-    @Column(name = "directorID")
     private Long directorID;
 
     @Column(name = "ActorID",insertable=false, updatable=false)
-    private Long actorId;
+    private Long ActorID;
 
-    @ManyToOne()
-    @JoinColumn(name="ActorID", referencedColumnName = "ActorID")
+    @ManyToOne(cascade=CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="ActorID", referencedColumnName = "ActorID", updatable = false, insertable = false)
     private Actor actor;
+
 
 }

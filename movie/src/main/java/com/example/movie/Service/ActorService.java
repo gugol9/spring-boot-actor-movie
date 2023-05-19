@@ -2,7 +2,9 @@ package com.example.movie.Service;
 
 import com.example.movie.Exception.RecordNotFoundException;
 import com.example.movie.Model.Actor;
+import com.example.movie.Model.Film;
 import com.example.movie.Repository.ActorRepository;
+import com.example.movie.Repository.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @Service
@@ -45,18 +48,20 @@ public class ActorService {
         return actorRepository.getActorsWithOscarAndGender(gender, String.valueOf(oscar));
     }
 
-   public void deleteActorById(Long id) throws RecordNotFoundException{
-       Optional<Actor> actor = actorRepository.findById(id);
 
-       if (actor.isPresent())actorRepository.deleteById(id);
-       else throw new RecordNotFoundException("No employee record exist for given id");
-   }
 
+    public void deleteById(Long id){
+        actorRepository.deleteById(id);
+    }
 
 
 
+    public void deleteActorById(Long id) throws RecordNotFoundException{
+        Optional<Actor> actor = actorRepository.findById(id);
 
-
+        if (actor.isPresent())actorRepository.deleteById(id);
+        else throw new RecordNotFoundException("No employee record exist for given id");
+    }
 
 
 }
