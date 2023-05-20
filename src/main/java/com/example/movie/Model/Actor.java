@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-
+import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long actorid;
+    private Long ActorID;
 
     private String firstname;
     private String lastname;
@@ -24,4 +24,8 @@ public class Actor {
     private int score;
     private boolean oscar;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ActorID", updatable = false, insertable = false)
+    @ToString.Exclude
+    private List<Film> filmList;
 }

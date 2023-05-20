@@ -39,22 +39,10 @@ import java.util.List;
         return "actor";
     }
 
-    /*
-    @DeleteMapping("/{id}")
-    public String deleteActor(@PathVariable("id") Long id, Model model){
-        actorService.deleteActor(id);
-        model.addAttribute("actorToDelete", actorService.getActor());
-        return "actor";
-    }
 
-     */
-
-
-    @RequestMapping(path = "/delete/{actorid}")
-    public String deleteEmployeeById(Model model, @PathVariable("actorid") Long actorid) throws RecordNotFoundException {
-
-
-        actorService.deleteActorById(actorid);
+    @RequestMapping(path = "/delete/{ActorID}")
+    public String deleteActorById(Model model, @PathVariable("ActorID") long ActorID) throws RecordNotFoundException {
+        actorService.deleteById(ActorID);
         List<Actor> list = actorService.getActor();
         model.addAttribute("list", list);
         return "actor";

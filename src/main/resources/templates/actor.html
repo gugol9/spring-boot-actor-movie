@@ -7,13 +7,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
     <link th:href="@{/styles/main.css}" rel="stylesheet" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>ACTORS</title>
+    <title>ACTOR'S</title>
 </head>
 <body>
+
 <div class="container mt-5">
-    <h2 align="center">Actor's</h2>
+     <h2>Actor's</h2>
     <div th:switch="${actors}" class="container">
         <div class="row">
             <div class="col-md-4">
@@ -46,7 +46,6 @@
                     <button type="submit"  class="btn-hover color-1">Sort</button>
                 </form>
             </div>
-
             <div class="col-md-4">
                 <form th:action="@{/actors/list}" method="GET">
                     <label for="oscar"></label>
@@ -79,19 +78,18 @@
         </thead>
         <tbody>
         <tr th:each="l : ${list}" th:field="${l}">
-            <td th:text="${l.actorid}"></td>
+            <td th:text="${l.ActorID}"></td>
             <td th:text="${l.firstname}"></td>
             <td th:text="${l.lastname}"></td>
             <td th:text="${l.birth}"></td>
             <td th:text="${l.gender}"></td>
             <td th:text="${l.score}"></td>
             <td th:text="${l.oscar}"></td>
-            <td><a th:href="@{/actors/delete/{actorid}(actorid=${l.actorid})}"
+            <td><a th:href="@{/actors/delete/{ActorID}(ActorID=${l.ActorID})}"
                    class="btn btn-secondary ">
-                    <i class="fas fa-user-times ml-2"></i>
-                </a>
+                <i class="fas fa-user-times ml-2"></i>
+            </a>
             </td>
-
         </tr>
         </tbody>
     </table>
