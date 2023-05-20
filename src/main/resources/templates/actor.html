@@ -73,6 +73,7 @@
             <th>Gender</th>
             <th>Score</th>
             <th>Oscar</th>
+            <th>Edit</th>
             <th>Delete</th>
         </tr>
         </thead>
@@ -85,6 +86,12 @@
             <td th:text="${l.gender}"></td>
             <td th:text="${l.score}"></td>
             <td th:text="${l.oscar}"></td>
+
+            <td><a th:href="@{/actors/edit/{ActorID}(ActorID=${l.ActorID})}"
+                   class="btn btn-secondary ">
+                <i class="fas fa-user-edit ml-2"></i>
+            </a>
+            </td>
             <td><a th:href="@{/actors/delete/{ActorID}(ActorID=${l.ActorID})}"
                    class="btn btn-secondary ">
                 <i class="fas fa-user-times ml-2"></i>

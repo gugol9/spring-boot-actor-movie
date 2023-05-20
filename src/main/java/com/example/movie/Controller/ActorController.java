@@ -35,7 +35,6 @@ import java.util.List;
             list = actorService.sortByTitle(columnName);
         }
         model.addAttribute("list", list);
-
         return "actor";
     }
 
@@ -48,6 +47,12 @@ import java.util.List;
         return "actor";
     }
 
+
+    @GetMapping("/edit/{ActorID}")
+    public String updateActor(Model model, @PathVariable("ActorID") long ActorID){
+        model.addAttribute("actor", actorService.getActorById(ActorID));
+        return "actor_edit";
+    }
 
 
 

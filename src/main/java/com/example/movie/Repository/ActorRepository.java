@@ -28,10 +28,4 @@ public interface ActorRepository extends JpaRepository<Actor,Long> {
 
 
 
-
-
-
-    //  @Query(value = "SELECT * FROM Actor ORDER BY  %:keyword%", nativeQuery = true)
-   // List<Actor> findByKeyword(@Param("keyword") String keyword);
-
 }
