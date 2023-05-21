@@ -4,7 +4,6 @@ body{
     font-weight: 500;
     font-size: 15px;
     line-height: 1.4;
-    color: #fff;
     overflow-x: hidden;
     background-position: center;
     background-repeat: repeat;
@@ -30,6 +29,10 @@ strong {
 
 p {
     font-family: sans-serif;
+}
+
+.from-group{
+    color: black;
 }
 
 .submit {
@@ -118,4 +121,8 @@ select {
 
 .styled-select select:focus {
     outline: none;
+}
+
+label{
+    color: black;
 }

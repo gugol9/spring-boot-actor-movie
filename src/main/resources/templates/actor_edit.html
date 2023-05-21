@@ -6,46 +6,100 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
-    <link th:href="@{/styles/main.css}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>ACTOR'S</title>
 </head>
 <body>
-
-<div class="container mt-5">
-    <div class="row">
-        <h2>Edit actor</h2>
-
-        <form th:action="@{/actors/edit/{ActorID} (ActorID=${actor.ActorID})}" th:object = "${actor}" method="POST">
-            <div class="from-group">
-                <label> Actor First Name</label>
-                <input
-                type="text"
-                name="firstName"
-                th:field="*{firstname}"
-                class="form-control"
-                placeholder="Enter Actor First Name">
-            </div>
-        </form>
-
-
-
-<!--
-
-CHce wprowadzic nowe dane a nie wyswietlic stare
-    edycja Aktora
-
-    imie
-    nazwisko
-    dat_urodzenia
-    plec
-    oscar
-    punkty
--->
-
+<nav th:fragment="navbar" class="navbar navbar-expand-md bg-success navbar-dark">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" >Actor Management System</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a class="nav-link" th:href="@{/actors/list}">Actor List</a></li>
+        </ul>
     </div>
+</nav>
+<br>
+<br>
 
+<div class="container">
+    <div class="row">
+        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h2> Update Actor</h2>
+            <div class = "card-body">
+                <form th:action="@{/actors/edit/{ActorID} (ActorID=${actor.ActorID})}" th:object = "${actor}" method="POST">
+                    <div class="from-group">
+                        <label> Actor First Name</label>
+                            <input
+                                type="text"
+                                name="firstName"
+                                th:field="*{firstname}"
+                                class="form-control"
+                                placeholder="Enter Actor First Name" 
+                            />
+                    </div><br>
+                    <div class="from-group">
+                        <label> Actor Last Name</label>
+                            <input
+                                type="text"
+                                name="lastName"
+                                th:field="*{lastname}"
+                                class="form-control"
+                                placeholder="Enter Actor Last Name"
+                            />
+                    </div><br>
+                    <div class="from-group">
+                        <label> Actor birth</label>
+                            <input
+                                type="text"
+                                name="birth"
+                                th:field="*{birth}"
+                                class="form-control"
+                                placeholder="Enter Actor birth"
+                            />
+                    </div><br>
+                    <div class="from-group">
+                        <label> Actor gender</label>
+                            <input
+                                type="text"
+                                name="gender"
+                                th:field="*{gender}"
+                                class="form-control"
+                                placeholder="Enter Actor gender"
+                            />
+                    </div><br>
+                    <div class="from-group">
+                        <label> Actor oscar</label>
+                        <input
+                                type="text"
+                                name="oscar"
+                                th:field="*{oscar}"
+                                class="form-control"
+                                placeholder="true / false"
+                        />
+                    </div><br>
+                    <div class="from-group">
+                        <label> Actor score</label>
+                        <input
+                                type="text"
+                                name="score"
+                                th:field="*{score}"
+                                class="form-control"
+                                placeholder="1 - 100"
+                        />
+                    </div>
+                    <br>
+                    <div class = "box-footer">
+                        <button type="submit" class = "btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
 
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
