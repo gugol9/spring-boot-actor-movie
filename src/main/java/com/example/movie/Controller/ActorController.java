@@ -54,6 +54,21 @@ import java.util.List;
         return "actor_edit";
     }
 
+    @PostMapping("/actor/{ActorID}")
+    public String updateActor(Model model, @PathVariable("ActorID") long ActorID, Actor actor){
+       Actor editActor = actorService.getActorById(ActorID);
+
+       editActor.setFirstname(actor.getFirstname());
+       editActor.setLastname(actor.getLastname());
+       editActor.setBirth(actor.getBirth());
+       editActor.setGender(actor.getGender());
+       editActor.setOscar(actor.isOscar());
+       editActor.setScore(actor.getScore());
+
+       actorService.updateActor(editActor);
+       return "actor";
+    }
+
 
 
 

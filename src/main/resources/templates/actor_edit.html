@@ -28,7 +28,7 @@
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h2> Update Actor</h2>
             <div class = "card-body">
-                <form th:action="@{/actors/edit/{ActorID} (ActorID=${actor.ActorID})}" th:object = "${actor}" method="POST">
+                <form th:action="@{/actors/actor/{ActorID} (ActorID=${actor.ActorID})}" th:object = "${actor}" method="POST">
                     <div class="from-group">
                         <label> Actor First Name</label>
                             <input
@@ -36,7 +36,7 @@
                                 name="firstName"
                                 th:field="*{firstname}"
                                 class="form-control"
-                                placeholder="Enter Actor First Name" 
+                                placeholder="Enter Actor First Name"
                             />
                     </div><br>
                     <div class="from-group">
