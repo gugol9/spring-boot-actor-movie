@@ -46,7 +46,7 @@ import java.util.List;
         return "actor";
     }
 
-
+//d
     @GetMapping(path = "/delete/{ActorID}")
     public String deleteActorById(Model model, @PathVariable("ActorID") long ActorID) throws RecordNotFoundException {
         actorService.deleteById(ActorID);
@@ -54,7 +54,6 @@ import java.util.List;
         model.addAttribute("list", list);
         return "actor";
     }
-
 
     @GetMapping("/edit/{ActorID}")
     public String updateActor(Model model, @PathVariable("ActorID") long ActorID){
