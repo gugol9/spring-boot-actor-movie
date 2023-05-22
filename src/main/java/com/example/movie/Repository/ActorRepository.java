@@ -27,5 +27,8 @@ public interface ActorRepository extends JpaRepository<Actor,Long> {
     List<Actor> getActorsWithOscarAndGender(@Param("oscar") String oscar,@Param("gender") String gende);
 
 
+    @Query("SELECT  a FROM Actor a ORDER BY a.score DESC")
+    List<Actor> getTop10Actor();
+
 
 }

@@ -47,9 +47,16 @@ public class ActorService {
         actorRepository.save(actor);
     }
 
-
     public Actor getActorById(Long actorID) {
        return  actorRepository.findById(actorID).get();
+    }
+
+    //lista top 10 aktorow w JPL napisa 
+    public List<Actor> getTop10Actor() {
+       return actorRepository.getTop10Actor()
+               .stream()
+               .limit(10)
+               .toList();
     }
 }
 

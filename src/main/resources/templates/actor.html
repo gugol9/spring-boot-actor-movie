@@ -11,39 +11,19 @@
     <title>ACTOR'S</title>
 </head>
 <body>
-
 <nav th:fragment="navbar" class="navbar navbar-expand-md bg-success navbar-dark">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand">Actor List</a>
-        </div>
+        <div class="navbar-header"><a class="navbar-brand">Actor List</a></div>
     </div>
 </nav>
 <br>
 <br>
 
-<div class="container mt-5">
+<div class="container">
     <div th:switch="${actors}">
-        <h2>Actor's</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <form th:action="@{/actors/list}" method="GET">
-                    <label for="gender">Select gender:</label>
-                    <select name="gender" id="gender">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="genderfluid">Genderfluid</option>
-                        <option value="genderqueer">Genderqueer</option>
-                        <option value="polygender">Polygender</option>
-                        <option value="non-binary">Non-binary</option>
-                        <option value="agender">Agender</option>
-                        <option value="genderqueer">Genderqueer</option>
-                    </select>
-                    <br>
-                    <button type="submit" class="btn-hover color-1">Filter</button>
-                </form>
-            </div>
-            <div class="col-md-4">
+        <div class="row justify-content-between">
+
+            <div class="col-4">
                 <form th:action="@{/actors/list}" method="GET">
                     <select name="columnName" id="columnName">
                         <option value="firstname">First name</option>
@@ -56,60 +36,77 @@
                     <button type="submit"  class="btn-hover color-1">Sort</button>
                 </form>
             </div>
-            <div class="col-md-4">
+
+            <div class="col-4">
+                <form th:action="@{/actors/list}" method="GET">
+                    <label for="gender"></label>
+                    <select name="gender" id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="genderfluid">Genderfluid</option>
+                        <option value="genderqueer">Genderqueer</option>
+                        <option value="polygender">Polygender</option>
+                        <option value="non-binary">Non-binary</option>
+                        <option value="agender">Agender</option>
+                        <option value="genderqueer">Genderqueer</option>
+                    </select>
+                    <br>
+                    <button type="submit" class="btn-hover color-1">Gender</button>
+                </form>
+            </div>
+
+            <div class="col-4 ">
                 <form th:action="@{/actors/list}" method="GET">
                     <label for="oscar"></label>
                     <select name="hasOscar" id="oscar">
-                        <option value="true">oscar</option>
-                        <option value="false">don't have oscar</option>
-
+                        <option value="true">true</option>
+                        <option value="false">false</option>
                     </select>
                     <br>
-                    <button type="submit"  class="btn-hover color-1">Filter</button>
+                    <button type="submit"  class="btn-hover color-1">Oscar</button>
                 </form>
             </div>
+
         </div>
     </div>
 
+                <table class="table table-bordered table-sm mt-2">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Birth</th>
+                        <th>Gender</th>
+                        <th>Score</th>
+                        <th>Oscar</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="l : ${list}" th:field="${l}">
+                        <td th:text="${l.ActorID}"></td>
+                        <td th:text="${l.firstname}"></td>
+                        <td th:text="${l.lastname}"></td>
+                        <td th:text="${l.birth}"></td>
+                        <td th:text="${l.gender}"></td>
+                        <td th:text="${l.score}"></td>
+                        <td th:text="${l.oscar}"></td>
 
-
-    <table class="table table-bordered table-sm mt-2">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Birth</th>
-            <th>Gender</th>
-            <th>Score</th>
-            <th>Oscar</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="l : ${list}" th:field="${l}">
-            <td th:text="${l.ActorID}"></td>
-            <td th:text="${l.firstname}"></td>
-            <td th:text="${l.lastname}"></td>
-            <td th:text="${l.birth}"></td>
-            <td th:text="${l.gender}"></td>
-            <td th:text="${l.score}"></td>
-            <td th:text="${l.oscar}"></td>
-
-            <td><a th:href="@{/actors/edit/{ActorID}(ActorID=${l.ActorID})}"
-                   class="btn btn-secondary ">
-                <i class="fas fa-user-edit ml-2"></i>
-            </a>
-            </td>
-            <td><a th:href="@{/actors/delete/{ActorID}(ActorID=${l.ActorID})}"
-                   class="btn btn-secondary ">
-                <i class="fas fa-user-times ml-2"></i>
-            </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-</body>
+                        <td><a  th:href="@{/actors/edit/{ActorID}(ActorID=${l.ActorID})}"
+                               class="btn btn-secondary ">
+                            <i class="fas fa-user-edit ml-2"></i>
+                        </a>
+                        </td>
+                        <td><a  th:href="@{/actors/delete/{ActorID}(ActorID=${l.ActorID})}"
+                               class="btn btn-secondary ">
+                            <i class="fas fa-user-times ml-2"></i>
+                        </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+    </body>
 </html>
