@@ -4,17 +4,9 @@ body{
     font-weight: 500;
     font-size: 15px;
     line-height: 1.4;
-    overflow-x: hidden;
-    background-position: center;
-    background-repeat: repeat;
     background-size: 4%;
+    background-color: #cecece;
     width: 100%;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-pack: center;
-    justify-content: center;
 }
 
 h2{

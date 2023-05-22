@@ -30,5 +30,9 @@ public interface ActorRepository extends JpaRepository<Actor,Long> {
     @Query("SELECT  a FROM Actor a ORDER BY a.score DESC")
     List<Actor> getTop10Actor();
 
+    @Query(value = "SELECT * FROM Actor a where a.firstname like %:keyword% OR a.lastname like %:keyword% OR a.score like %:keyword% OR a.oscar like %:keyword%", nativeQuery = true)
+    List<Actor> findByKeyword(@Param("keyword") String keyword);
+
+
 
 }

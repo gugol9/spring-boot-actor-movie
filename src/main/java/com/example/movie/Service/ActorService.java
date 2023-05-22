@@ -21,6 +21,10 @@ public class ActorService {
         this.actorRepository = actorRepository;
     }
 
+    public List<Actor> getAllActors(){
+        return actorRepository.findAll();
+    }
+
     public List<Actor> getActor(){
         List<Actor> list = (List<Actor>)actorRepository.findAll();
         return list;
@@ -58,11 +62,9 @@ public class ActorService {
                .limit(10)
                .toList();
     }
+
+    public List<Actor> findByKeyword(String keyWord){
+        return actorRepository.findByKeyword(keyWord);
+    }
 }
 
-
-/*   public List<Actor> getActorByOscarAndGender( String gender, boolean oscar){
-        return actorRepository.getActorsWithOscarAndGender(gender, String.valueOf(oscar));
-    }
-
- */

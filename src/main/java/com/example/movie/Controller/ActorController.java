@@ -78,6 +78,18 @@ import java.util.List;
     }
 
 
+    @GetMapping("/search")
+    public String searchActorByKeyWord(Model model, String keyword){
+        List<Actor> list;
+        if (keyword !=  null){
+            list = actorService.findByKeyword(keyword);
+        }else {
+            list = actorService.getActor();
+        }
+        model.addAttribute("search", list);
+        return "search";
+    }
+
 
 
 
