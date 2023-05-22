@@ -25,10 +25,7 @@ public class ActorService {
         return actorRepository.findAll();
     }
 
-    public List<Actor> getActor(){
-        List<Actor> list = (List<Actor>)actorRepository.findAll();
-        return list;
-    }
+
 
     public List<Actor> getActorOscar(){
         return  actorRepository.getActorsWithOscar();
@@ -55,7 +52,7 @@ public class ActorService {
        return  actorRepository.findById(actorID).get();
     }
 
-    //lista top 10 aktorow w JPL napisa 
+
     public List<Actor> getTop10Actor() {
        return actorRepository.getTop10Actor()
                .stream()

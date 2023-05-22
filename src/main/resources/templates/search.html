@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="www.thymeleaf.org">
 <head>
-    <meta charset="ISO-8859-1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <meta charset="ISO-8859-1" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
     <link th:href="@{/styles/main.css}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Search Actor</title>
 </head>
 <body>
@@ -21,46 +18,51 @@
         <div class="navbar-header"><a class="navbar-brand">Search actor</a></div>
     </div>
     <ul class="nav navbar-nav">
-        <li><a class="nav-link" th:href="@{/actors/top10}">top actors and films</a></li>
+        <li><a class="nav-link" th:href="@{/actors/list}">Actors list</a></li>
     </ul>
-</nav>
-<br>
-<br>
+    <ul class="nav navbar-nav">
+        <li><a class="nav-link" th:href="@{/actors/top10}">Top actors and films</a></li>
+    </ul>
 
-    <div class="container">
-        <div class="row">
-            <form th:action="@{/actors/search}">
-                <label>
-                    <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by anythink" size="50" >
-                </label>
-                <button type="submit" class="btn-hover color-1" >Search</button>
-                <button type="submit" class="btn-hover color-1" >Reset</button>
-            </form>
-            <table class="table table-bordered table-sm mt-2">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Birth</th>
-                    <th>Gender</th>
-                    <th>Score</th>
-                    <th>Oscar</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="l : ${search}">
-                    <td th:text="${l.ActorID}"></td>
-                    <td th:text="${l.firstname}"></td>
-                    <td th:text="${l.lastname}"></td>
-                    <td th:text="${l.birth}"></td>
-                    <td th:text="${l.gender}"></td>
-                    <td th:text="${l.score}"></td>
-                    <td th:text="${l.oscar}"></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+
+</nav>
+<br />
+<br />
+
+<div class="container">
+    <div class="row">
+        <form th:action="@{/actors/search}">
+            <label>
+                <input type="text" name="keyword" th:value="${keyword}" placeholder="Find by anythink" size="50" />
+            </label>
+            <button type="submit" class="btn-hover color-1">Search</button>
+            <button type="submit" class="btn-hover color-1">Reset</button>
+        </form>
+        <table class="table table-bordered table-sm mt-2">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birth</th>
+                <th>Gender</th>
+                <th>Score</th>
+                <th>Oscar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="l : ${search}">
+                <td th:text="${l.ActorID}"></td>
+                <td th:text="${l.firstname}"></td>
+                <td th:text="${l.lastname}"></td>
+                <td th:text="${l.birth}"></td>
+                <td th:text="${l.gender}"></td>
+                <td th:text="${l.score}"></td>
+                <td th:text="${l.oscar}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
+</div>
 </body>
 </html>

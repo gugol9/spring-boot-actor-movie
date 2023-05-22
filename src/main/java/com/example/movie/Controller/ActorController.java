@@ -33,7 +33,7 @@ import java.util.List;
             @RequestParam(required = false) String gender,
             @RequestParam(required = false) Boolean hasOscar
     ) {
-        List<Actor> list = actorService.getActor();
+        List<Actor> list = actorService.getAllActors();
         if (hasOscar != null && hasOscar){
             list = actorService.getActorOscar();
         }
@@ -50,7 +50,7 @@ import java.util.List;
     @GetMapping(path = "/delete/{ActorID}")
     public String deleteActorById(Model model, @PathVariable("ActorID") long ActorID) throws RecordNotFoundException {
         actorService.deleteById(ActorID);
-        List<Actor> list = actorService.getActor();
+        List<Actor> list = actorService.getAllActors();
         model.addAttribute("list", list);
         return "actor";
     }
@@ -84,7 +84,7 @@ import java.util.List;
         if (keyword !=  null){
             list = actorService.findByKeyword(keyword);
         }else {
-            list = actorService.getActor();
+            list = actorService.getAllActors();
         }
         model.addAttribute("search", list);
         return "search";
