@@ -12,14 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@Controller //sprawia ze ta klasa obsluguje punkty koncowe(getMapping itp)
+@Controller
 @RequestMapping("/actors/")
     public class ActorController {
 
     @Autowired
     private ActorService actorService;
 
-    //top 10 aktorow
     @GetMapping("/top10")
     public String top10(Model model){
         List<Actor> list = actorService.getTop10Actor();
@@ -46,7 +45,7 @@ import java.util.List;
         return "actor";
     }
 
-//dd
+//dde
     @GetMapping(path = "/delete/{ActorID}")
     public String deleteActorById(Model model, @PathVariable("ActorID") long ActorID) throws RecordNotFoundException {
         actorService.deleteById(ActorID);
@@ -88,9 +87,4 @@ import java.util.List;
         model.addAttribute("search", list);
         return "search";
     }
-
-
-
-
-
 }
