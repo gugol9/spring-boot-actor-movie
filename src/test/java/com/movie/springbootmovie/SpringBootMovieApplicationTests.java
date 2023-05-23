@@ -1,10 +1,10 @@
-package com.example.movie;
+package com.movie.springbootmovie;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MovieApplicationTests {
+class SpringBootMovieApplicationTests {
 
 	@Test
 	void contextLoads() {
