@@ -19,12 +19,11 @@ public class Film {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long TitleID;
+    private Long titleID;
     private String title;
     private LocalDate yearOfProduction;
     private int lengthMinutes;
     private String genre;
-    private Long ratinID;
     private Long directorID;
     private Long soundTrackID;
 

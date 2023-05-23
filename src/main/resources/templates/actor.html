@@ -13,15 +13,17 @@
 <body>
 <nav th:fragment="navbar" class="navbar navbar-expand-md bg-success navbar-dark">
     <div class="container-fluid">
-        <div class="navbar-header"><a class="navbar-brand">Actor List</a></div>
-    </div>
+        <div class="navbar-header">
+            <a class="navbar-brand">Actor List</a>
+        </div>
+
     <ul class="nav navbar-nav">
         <li><a class="nav-link" th:href="@{/actors/top10}">Top actors</a></li>
     </ul>
     <ul class="nav navbar-nav">
         <li><a class="nav-link" th:href="@{/actors/search}">Search actor</a></li>
     </ul>
-
+    </div>
 </nav>
 <br />
 <br />
