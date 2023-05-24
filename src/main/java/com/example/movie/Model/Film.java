@@ -19,6 +19,7 @@ public class Film {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "titleID",insertable=false, updatable=false)
     private Long titleID;
     private String title;
     private LocalDate yearOfProduction;
@@ -33,6 +34,11 @@ public class Film {
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="ActorID", referencedColumnName = "ActorID", updatable = false, insertable = false)
     private Actor actor;
+
+    @OneToMany(cascade =  CascadeType.ALL)
+    @JoinColumn(name = "titleID", updatable = false, insertable = false)
+    private List<Rating> ratingList;
+
 
 
 }

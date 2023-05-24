@@ -48,7 +48,7 @@
                     </tr>
                     </thead>
                     <tbody >
-                    <tr th:each="l : ${top10Actors}" th:field="${l}">
+                    <tr th:each="l : ${topActors}" th:field="${l}">
                         <td th:text="${l.ActorID}"></td>
                         <td th:text="${l.firstname}"></td>
                         <td th:text="${l.lastname}"></td>
@@ -61,7 +61,25 @@
                 </table>
             </div>
             <div class="col-sm">
-                Actor average
+
+                <a> Top 10 Film's</a>
+                <table class="table table-bordered table-sm mt-2">
+                    <thead>
+                    <tr>
+                        <th>title</th>
+                        <th>score</th>
+
+                    </tr>
+                    </thead>
+                    <tbody >
+                    <tr th:each="topFilms : ${topFilms}" >
+                        <td th:text="${topFilms.title}"></td>
+                        <td th:text="${topFilms.score}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
             </div>
             <div class="col-sm">
                 One of three columns

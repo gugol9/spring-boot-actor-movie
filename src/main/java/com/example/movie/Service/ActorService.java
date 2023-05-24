@@ -3,12 +3,10 @@ package com.example.movie.Service;
 import com.example.movie.Model.Actor;
 import com.example.movie.Repository.ActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -53,6 +51,7 @@ public class ActorService {
     }
 
 
+    //ZLE UZYCIE DAO
     public List<Actor> getTop10Actor() {
        return actorRepository.getTop10Actor()
                .stream()

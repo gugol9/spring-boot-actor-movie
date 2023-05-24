@@ -19,6 +19,8 @@ public class Rating {
     private String review;
     private long titleID;
 
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "titleID", referencedColumnName = "titleID", updatable = false, insertable = false)
+    private Film film;
 
 }

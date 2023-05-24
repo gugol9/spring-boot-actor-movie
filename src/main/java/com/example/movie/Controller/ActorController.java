@@ -5,8 +5,6 @@ import com.example.movie.Exception.RecordNotFoundException;
 import com.example.movie.Model.Actor;
 import com.example.movie.Service.ActorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,14 +16,6 @@ import java.util.List;
 
     @Autowired
     private ActorService actorService;
-
-    //top 10 aktorow
-    @GetMapping("/top10")
-    public String top10(Model model){
-        List<Actor> list = actorService.getTop10Actor();
-        model.addAttribute("top10Actors",list);
-        return "index";
-    }
 
     @GetMapping("/list")
     public String getActor(
@@ -46,7 +36,6 @@ import java.util.List;
         return "actor";
     }
 
-//dd
     @GetMapping(path = "/delete/{ActorID}")
     public String deleteActorById(Model model, @PathVariable("ActorID") long ActorID) throws RecordNotFoundException {
         actorService.deleteById(ActorID);
@@ -76,7 +65,7 @@ import java.util.List;
        return "actor";
     }
 
-
+    
     @GetMapping("/search")
     public String searchActorByKeyWord(Model model, String keyword){
         List<Actor> list;
@@ -88,9 +77,4 @@ import java.util.List;
         model.addAttribute("search", list);
         return "search";
     }
-
-
-
-
-
 }
