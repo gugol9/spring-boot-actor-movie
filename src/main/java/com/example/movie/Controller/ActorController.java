@@ -17,6 +17,14 @@ import java.util.List;
     @Autowired
     private ActorService actorService;
 
+    //top 10 aktorow
+    @GetMapping("/top10")
+    public String top10(Model model){
+        List<Actor> list = actorService.getTop10Actor();
+        model.addAttribute("top10Actors",list);
+        return "index";
+    }
+
     @GetMapping("/list")
     public String getActor(
             @RequestParam(required = false) String columnName, Model model,

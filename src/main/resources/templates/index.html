@@ -82,7 +82,22 @@
 
             </div>
             <div class="col-sm">
-                One of three columns
+                <a> Top 10 Film's</a>
+                <table class="table table-bordered table-sm mt-2">
+                    <thead>
+                    <tr>
+                        <th>title</th>
+                        <th>score</th>
+
+                    </tr>
+                    </thead>
+                    <tbody >
+                    <tr th:each="topFilms : ${topFilms}" >
+                        <td th:text="${topFilms.title}"></td>
+                        <td th:text="${topFilms.score}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
