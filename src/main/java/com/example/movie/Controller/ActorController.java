@@ -65,7 +65,7 @@ import java.util.List;
        return "actor";
     }
 
-    
+
     @GetMapping("/search")
     public String searchActorByKeyWord(Model model, String keyword){
         List<Actor> list;
