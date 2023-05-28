@@ -25,8 +25,10 @@ public class FilmRatingController {
     public String getTop(Model model){
         List<Actor> actorList = actorService.getTop10Actor();
         List<FilmRatingDTO> dtoList = filmService.getTop10Film();
+        List<String> filmList = filmService.getGenre();
         model.addAttribute("topActors", actorList);
         model.addAttribute("topFilms", dtoList);
+        model.addAttribute("filmGenre", filmList);
         return "index";
     }
 }

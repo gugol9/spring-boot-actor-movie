@@ -27,7 +27,9 @@ public class FilmService {
         .toList();
     }
 
-
+public List<String> getGenre(){
+        return filmRepository.getFilmGenre();
+}
 
 
 

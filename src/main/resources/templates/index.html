@@ -66,8 +66,8 @@
                 <table class="table table-bordered table-sm mt-2">
                     <thead>
                     <tr>
-                        <th>title</th>
-                        <th>score</th>
+                        <th>Title</th>
+                        <th>Score</th>
 
                     </tr>
                     </thead>
@@ -82,7 +82,19 @@
 
             </div>
             <div class="col-sm">
-                One of three columns
+                <a> Films Genre</a>
+                <table class="table table-bordered table-sm mt-2">
+                    <thead>
+                    <tr>
+                        <th>Genre</th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                    <tr th:each="filmGenre : ${filmGenre}" >
+                        <td th:text="${filmGenre}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
