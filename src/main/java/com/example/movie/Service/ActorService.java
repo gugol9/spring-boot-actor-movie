@@ -19,11 +19,10 @@ public class ActorService {
         this.actorRepository = actorRepository;
     }
 
+
     public List<Actor> getAllActors(){
         return actorRepository.findAll();
     }
-
-
 
     public List<Actor> getActorOscar(){
         return  actorRepository.getActorsWithOscar();
