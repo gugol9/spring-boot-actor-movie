@@ -1,12 +1,9 @@
 package com.example.movie.Controller;
 
-
 import com.example.movie.Exception.RecordNotFoundException;
 import com.example.movie.Model.Actor;
 import com.example.movie.Service.ActorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +16,10 @@ import java.util.List;
     @Autowired
     private ActorService actorService;
 
+<<<<<<< HEAD
+=======
+    //top 10 aktorow
+>>>>>>> development
     @GetMapping("/top10")
     public String top10(Model model){
         List<Actor> list = actorService.getTop10Actor();
@@ -45,7 +46,7 @@ import java.util.List;
         return "actor";
     }
 
-//aa2
+
     @GetMapping(path = "/delete/{ActorID}")
     public String deleteActorById(Model model, @PathVariable("ActorID") long ActorID) throws RecordNotFoundException {
         actorService.deleteById(ActorID);
@@ -76,6 +77,10 @@ import java.util.List;
     }
 
 
+       actorService.updateActor(editActor);
+       return "actor";
+    }
+
     @GetMapping("/search")
     public String searchActorByKeyWord(Model model, String keyword){
         List<Actor> list;
@@ -86,5 +91,33 @@ import java.util.List;
         }
         model.addAttribute("search", list);
         return "search";
+    }
+
+
+    @GetMapping("/search")
+    public String searchActorByKeyWord(Model model, String keyword){
+        List<Actor> list;
+        if (keyword !=  null){
+            list = actorService.findByKeyword(keyword);
+        }else {
+            list = actorService.getAllActors();
+        }
+        model.addAttribute("search", list);
+        return "search";
+
+    //kontroler jest odpowiedzialna za wyświetlanie formularza do dodawania nowego studenta.
+    @GetMapping("/create/add")
+    public String createActor(Model model){
+        Actor actor = new Actor();
+        model.addAttribute("actor", actor);
+        return "add_actor";
+    }
+
+    // Post actor
+    @PostMapping("/create")
+    public String saveActor(@ModelAttribute("actor") Actor actor){
+        actorService.addActor(actor);
+        return "actor";
+
     }
 }

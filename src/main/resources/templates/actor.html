@@ -13,14 +13,24 @@
 <body>
 <nav th:fragment="navbar" class="navbar navbar-expand-md bg-success navbar-dark">
     <div class="container-fluid">
+<<<<<<< HEAD
         <div class="navbar-header"><a class="navbar-brand">Actor List</a></div>
     </div>
     <ul class="nav navbar-nav">
         <li><a class="nav-link" th:href="@{/actors/top10}">Top actors</a></li>
+=======
+        <div class="navbar-header">
+            <a class="navbar-brand">Actor List</a>
+        </div>
+
+    <ul class="nav navbar-nav">
+        <li><a class="nav-link" th:href="@{/top}">Top</a></li>
+>>>>>>> development
     </ul>
     <ul class="nav navbar-nav">
         <li><a class="nav-link" th:href="@{/actors/search}">Search actor</a></li>
     </ul>
+<<<<<<< HEAD
 
 </nav>
 <br />
@@ -45,6 +55,37 @@
 
             <div class="col-4">
                 <form th:action="@{/actors/list}" method="GET">
+=======
+    </div>
+</nav>
+<br />
+<br />
+
+<div class="container">
+    <div th:switch="${actors}">
+        <div class="row justify-content-between">
+            <div class="col-3">
+                <form th:action="@{/actors/create/add}">
+                    <button type="submit" class="btn btn-success">Add actor</button>
+                </form>
+            </div>
+            <div class="col-3">
+                <form th:action="@{/actors/list}" method="GET">
+                    <select name="columnName" id="columnName">
+                        <option value="firstname">First name</option>
+                        <option value="lastname">Last name</option>
+                        <option value="birth">Birth</option>
+                        <option value="gender">Gender</option>
+                        <option value="score">Score</option>
+                    </select>
+                    <br />
+                    <button type="submit" class="btn-hover color-1">Sort</button>
+                </form>
+            </div>
+
+            <div class="col-3">
+                <form th:action="@{/actors/list}" method="GET">
+>>>>>>> development
                     <label for="gender"></label>
                     <select name="gender" id="gender">
                         <option value="male">Male</option>
@@ -61,7 +102,11 @@
                 </form>
             </div>
 
+<<<<<<< HEAD
             <div class="col-4">
+=======
+            <div class="col-3">
+>>>>>>> development
                 <form th:action="@{/actors/list}" method="GET">
                     <label for="oscar"></label>
                     <select name="hasOscar" id="oscar">
