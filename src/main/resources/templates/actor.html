@@ -31,7 +31,12 @@
 <div class="container">
     <div th:switch="${actors}">
         <div class="row justify-content-between">
-            <div class="col-4">
+            <div class="col-3">
+                <form th:action="@{/actors/create/add}">
+                    <button type="submit" class="btn btn-success">Add actor</button>
+                </form>
+            </div>
+            <div class="col-3">
                 <form th:action="@{/actors/list}" method="GET">
                     <select name="columnName" id="columnName">
                         <option value="firstname">First name</option>
@@ -45,7 +50,7 @@
                 </form>
             </div>
 
-            <div class="col-4">
+            <div class="col-3">
                 <form th:action="@{/actors/list}" method="GET">
                     <label for="gender"></label>
                     <select name="gender" id="gender">
@@ -63,7 +68,7 @@
                 </form>
             </div>
 
-            <div class="col-4">
+            <div class="col-3">
                 <form th:action="@{/actors/list}" method="GET">
                     <label for="oscar"></label>
                     <select name="hasOscar" id="oscar">
