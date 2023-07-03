@@ -35,49 +35,54 @@
 <div class="container">
     <div class="row">
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-            <h2> Update Actor</h2>
+            <h2> Create Actor</h2>
             <div class = "card-body">
-                <form th:action="@{/actors/actor/{ActorID} (ActorID=${actor.ActorID})}" th:object = "${actor}" method="POST">
+                <form th:action="@{/actors/create}" th:object = "${actor}"  method="POST">
                     <div class="from-group">
                         <label> Actor First Name</label>
-                            <input
+                        <input
                                 type="text"
                                 name="firstName"
                                 th:field="*{firstname}"
                                 class="form-control"
-                                placeholder="Enter Actor First Name"
-                            />
+                                placeholder="First Name"
+                        />
                     </div><br>
                     <div class="from-group">
                         <label> Actor Last Name</label>
-                            <input
+                        <input
                                 type="text"
                                 name="lastName"
                                 th:field="*{lastname}"
                                 class="form-control"
-                                placeholder="Enter Actor Last Name"
-                            />
+                                placeholder="Last Name"
+                        />
                     </div><br>
                     <div class="from-group">
                         <label> Actor birth</label>
-                            <input
+                        <input
                                 type="text"
                                 name="birth"
                                 th:field="*{birth}"
                                 class="form-control"
-                                placeholder="Enter Actor birth"
-                            />
+                                placeholder="yyyy-mm-dd"
+                        />
                     </div><br>
                     <div class="from-group">
                         <label> Actor gender</label>
-                            <input
-                                type="text"
-                                name="gender"
-                                th:field="*{gender}"
-                                class="form-control"
-                                placeholder="Enter Actor gender"
-                            />
-                    </div><br>
+                        <select th:field="*{gender}">
+                            <option th:value="'Male'" th:text="Male"></option>
+                            <option th:value="'Female'" th:text="Female"></option>
+                            <option th:value="'Genderfluid'" th:text="Genderfluid"></option>
+                            <option th:value="'Genderqueer'" th:text="Genderqueer"></option>
+                            <option th:value="'Polygender'" th:text="Polygender"></option>
+                            <option th:value="'Non-binary'" th:text="Non-binary"></option>
+                            <option th:value="'Agender'" th:text="Agender"></option>
+                            <option th:value="'Genderqueer'" th:text="Genderqueer"></option>
+
+                        </select>
+                    </div>
+                    <br>
                     <div class="from-group">
                         <label> Actor oscar</label>
                         <input

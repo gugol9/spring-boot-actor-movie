@@ -1,6 +1,5 @@
 package com.example.movie.Controller;
 
-
 import com.example.movie.Exception.RecordNotFoundException;
 import com.example.movie.Model.Actor;
 import com.example.movie.Service.ActorService;
@@ -84,5 +83,20 @@ import java.util.List;
         }
         model.addAttribute("search", list);
         return "search";
+    }
+
+    //kontroler jest odpowiedzialna za wyświetlanie formularza do dodawania nowego studenta.
+    @GetMapping("/create/add")
+    public String createActor(Model model){
+        Actor actor = new Actor();
+        model.addAttribute("actor", actor);
+        return "add_actor";
+    }
+
+    // Post actor
+    @PostMapping("/create")
+    public String saveActor(@ModelAttribute("actor") Actor actor){
+        actorService.addActor(actor);
+        return "actor";
     }
 }
